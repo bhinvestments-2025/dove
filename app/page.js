@@ -885,26 +885,13 @@ const DoveEquitiesLanding = () => {
       </section>
 
       {/* Footer with Contact Form */}
-      <footer 
-        id="contact" 
-        className="bg-gray-900 text-white py-16"
-        data-sb-object-id="footer"
-      >
+      <footer id="contact" className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
           <div className="grid md:grid-cols-2 gap-12 mb-12">
-
             {/* Contact Form */}
-            <div data-sb-object-id="footer.contactForm">
-              <h3 
-                className="text-3xl font-bold mb-6"
-                data-sb-field-path="title"
-              >
-                Contact Us
-              </h3>
-
+            <div>
+              <h3 className="text-3xl font-bold mb-6">Contact Us</h3>
               <form onSubmit={handleContactSubmit} className="space-y-4">
-                {/* form is intentionally not editable */}
                 <Input
                   placeholder="Your Name"
                   value={contactForm.name}
@@ -943,44 +930,24 @@ const DoveEquitiesLanding = () => {
             </div>
 
             {/* Contact Information */}
-            <div data-sb-object-id="footer.contactInfo">
-              
+            <div>
               <div className="space-y-4">
                 <div className="flex items-start">
                   <MapPin className="mr-3 mt-1 flex-shrink-0 text-blue-400" size={20} />
-                  <p data-sb-field-path="address">
-                    199 Lee Avenue, Suite 157<br/>Brooklyn, NY 11211
-                  </p>
+                  <p>199 Lee Avenue, Suite 157<br />Brooklyn, NY 11211</p>
                 </div>
-
                 <div className="flex items-center">
                   <Mail className="mr-3 flex-shrink-0 text-blue-400" size={20} />
-                  <a 
-                    href="mailto:info@doveequities.com" 
-                    className="hover:text-blue-400 transition-colors"
-                    data-sb-field-path="email"
-                  >
-                    info@doveequities.com
-                  </a>
+                  <a href="mailto:info@doveequities.com" className="hover:text-blue-400 transition-colors">info@doveequities.com</a>
                 </div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-gray-800">
-                <h4 
-                  className="font-semibold mb-3"
-                  data-sb-field-path="linksTitle"
-                >
-                  Useful Links
-                </h4>
-
-                <div 
-                  className="space-y-2"
-                  data-sb-object-id="footer.usefulLinks"
-                >
+                <h4 className="font-semibold mb-3">Useful Links</h4>
+                <div className="space-y-2">
                   <button
                     onClick={() => window.open('https://doveequities.h.trustco.ai/', '_blank')}
                     className="block hover:text-blue-400 transition-colors"
-                    data-sb-field-path="textLinks.0.label"
                   >
                     Connect Via Text
                   </button>
@@ -988,7 +955,6 @@ const DoveEquitiesLanding = () => {
                   <button
                     onClick={() => window.open('https://doveequities.h.trustco.ai/#termsArea', '_blank')}
                     className="block hover:text-blue-400 transition-colors"
-                    data-sb-field-path="textLinks.1.label"
                   >
                     Messaging T&Cs
                   </button>
@@ -996,27 +962,17 @@ const DoveEquitiesLanding = () => {
                   <button
                     onClick={() => window.open('https://doveequities.h.trustco.ai/#privacyArea', '_blank')}
                     className="block hover:text-blue-400 transition-colors"
-                    data-sb-field-path="textLinks.2.label"
                   >
                     Messaging Privacy Policy
                   </button>
                 </div>
               </div>
-
             </div>
-
           </div>
+          <div className="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm space-y-1">
+            <p>© Copyright 2024 Dove Equities</p>
 
-          {/* COPYRIGHT BAR */}
-          <div 
-            className="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm space-y-1"
-            data-sb-object-id="footer.bottomBar"
-          >
-            <p data-sb-field-path="copyright">
-              © Copyright 2024 Dove Equities
-            </p>
-
-            <p data-sb-field-path="legalLinks">
+            <p>
               <a
                 href="https://www.doveequities.com/privacy-policy"
                 target="_blank"
@@ -1036,7 +992,6 @@ const DoveEquitiesLanding = () => {
               </a>
             </p>
           </div>
-
         </div>
       </footer>
     </div>
