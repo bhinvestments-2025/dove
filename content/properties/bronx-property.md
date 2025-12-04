@@ -1,4 +1,5 @@
----
+﻿---
+price: ""
 title: "Bronx Property"
 slug: "bronx-property"
 location: "Bronx, NY"
@@ -20,3 +21,4 @@ Prime investment property located in the Bronx, offering excellent returns and s
 ## Investment Details
 
 This property represents a solid investment opportunity in one of New York City's most dynamic boroughs. The Bronx continues to show strong growth potential with excellent infrastructure and community development.
+

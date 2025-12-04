@@ -1,4 +1,5 @@
----
+﻿---
+price: ""
 title: "Flushing Property"
 slug: "flushing-property"
 location: "Flushing, Queens, NY"
@@ -20,3 +21,4 @@ Strategic investment in Flushing, Queens - a vibrant neighborhood with diverse c
 ## Investment Value
 
 Flushing offers unique investment opportunities with its strong Asian community, excellent schools, and continued development.
+

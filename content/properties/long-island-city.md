@@ -1,4 +1,5 @@
----
+﻿---
+price: ""
 title: "Long Island City Property"
 slug: "long-island-city"
 location: "Long Island City, Queens, NY"
@@ -20,3 +21,4 @@ Premium property in Long Island City, one of NYC's fastest-growing neighborhoods
 ## Growth Prospects
 
 LIC has transformed into a major hub for business and residential development, offering exceptional investment returns.
+

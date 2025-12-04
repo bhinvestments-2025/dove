@@ -1,4 +1,5 @@
----
+﻿---
+price: ""
 title: "Newburgh Property"
 slug: "newburgh-property"
 location: "Newburgh, NY"
@@ -20,3 +21,4 @@ Investment property in Newburgh, offering growth potential in an emerging market
 ## Market Opportunity
 
 Newburgh presents unique opportunities for investors looking beyond traditional NYC boundaries, with strong appreciation potential.
+

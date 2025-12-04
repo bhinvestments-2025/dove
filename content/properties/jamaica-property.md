@@ -1,4 +1,5 @@
----
+﻿---
+price: ""
 title: "Jamaica Property"
 slug: "jamaica-property"
 location: "Jamaica, Queens, NY"
@@ -20,3 +21,4 @@ Strategic commercial property in Jamaica, Queens - a major transportation and co
 ## Commercial Value
 
 Jamaica serves as a major commercial corridor with the Jamaica Center providing excellent foot traffic and business opportunities.
+
