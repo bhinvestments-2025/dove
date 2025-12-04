@@ -288,51 +288,91 @@ const DoveEquitiesLanding = () => {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="pt-20 relative">
+      <section 
+        id="home" 
+        className="pt-20 relative"
+        data-sb-object-id="homepage-hero"
+      >
         <div className="relative h-[600px] sm:h-[700px]">
-          <div 
+
+          {/* Editable Hero Background */}
+          <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ 
+            style={{
               backgroundImage: `url('https://customer-assets.emergentagent.com/job_7ee4cd2f-500b-4046-9ef5-6c05f3003821/artifacts/urqzq9w5_jason-dent-w3eFhqXjkZE-unsplash-scaled.jpg')`,
             }}
             aria-hidden="true"
+            data-sb-field-path="hero.backgroundImage"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
           </div>
-          
+
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
             <div className="grid md:grid-cols-2 gap-8 w-full items-center">
+
+              {/* HERO TEXT */}
               <div className="text-white space-y-6">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+
+                {/* Editable Title */}
+                <h1
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
+                  data-sb-field-path="hero.title"
+                >
                   New York's #1 Homebuyers
                 </h1>
-                <p className="text-xl sm:text-2xl text-gray-100">
+
+                {/* Editable Subtitle */}
+                <p
+                  className="text-xl sm:text-2xl text-gray-100"
+                  data-sb-field-path="hero.subtitle"
+                >
                   We buy houses in ANY condition
                 </p>
+
+                {/* HERO BULLETS */}
                 <div className="space-y-4 text-lg">
+
                   <p className="flex items-start">
                     <CheckCircle className="mr-3 mt-1 flex-shrink-0 text-blue-400" size={24} />
-                    <span>We buy properties in New York directly from property owners within three weeks or less</span>
+                    <span data-sb-field-path="hero.bullet1">
+                      We buy properties in New York directly from property owners within three weeks or less
+                    </span>
                   </p>
+
                   <p className="flex items-start">
                     <CheckCircle className="mr-3 mt-1 flex-shrink-0 text-blue-400" size={24} />
-                    <span>No commission, closing costs, or hidden fees - all cash offers</span>
+                    <span data-sb-field-path="hero.bullet2">
+                      No commission, closing costs, or hidden fees - all cash offers
+                    </span>
                   </p>
+
                   <p className="flex items-start">
                     <CheckCircle className="mr-3 mt-1 flex-shrink-0 text-blue-400" size={24} />
-                    <span>20+ Years of Proven Expertise</span>
+                    <span data-sb-field-path="hero.bullet3">
+                      20+ Years of Proven Expertise
+                    </span>
                   </p>
+
                   <p className="flex items-start">
                     <CheckCircle className="mr-3 mt-1 flex-shrink-0 text-blue-400" size={24} />
-                    <span>Direct, person-to-person service - no MLS listings, no agents, no stress</span>
+                    <span data-sb-field-path="hero.bullet4">
+                      Direct, person-to-person service - no MLS listings, no agents, no stress
+                    </span>
                   </p>
+
                 </div>
               </div>
 
-              {/* Hero Form (Replicated from Modal Form) */}
+              {/* HERO FORM — not editable in CMS */}
               <div className="bg-white rounded-lg shadow-2xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Get Your Cash Offer Today</h2>
-                <p className="text-gray-600 mb-6">Please keep your line open, we'll call you today!</p>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  Get Your Cash Offer Today
+                </h2>
+                <p className="text-gray-600 mb-6">
+                  Please keep your line open, we'll call you today!
+                </p>
+
+                {/* Form remains unchanged */}
                 <form onSubmit={handleModalSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                   <Input
                     placeholder="Full Name"
@@ -362,9 +402,8 @@ const DoveEquitiesLanding = () => {
                     required
                   />
 
-                  {/* Checkboxes for Hero Form */}
+                  {/* Checkboxes */}
                   <div className="md:col-span-2 space-y-2 text-[10px] text-gray-400 leading-relaxed">
-
                     {/* Required Checkbox */}
                     <label className="flex items-start space-x-2">
                       <input
@@ -397,20 +436,12 @@ const DoveEquitiesLanding = () => {
                         }
                       />
                       <span>
-                        By submitting the contact form and signing up for texts, you consent to
-                        receive marketing text messages from Dove Equities at the number provided.
-                        Consent is not a condition of purchase. Message frequency varies. Message and
-                        data rates may apply. You can unsubscribe anytime by replying STOP. Text HELP
-                        for help. Read our{" "}
-                        <a href="https://www.doveequities.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline">
-                          Privacy Policy
-                        </a>{" "}
-                        for more details.
+                        By submitting the contact form…
                       </span>
                     </label>
                   </div>
 
-                  {/* SUBMIT BUTTON */}
+                  {/* Submit */}
                   <div className="md:col-span-2">
                     <Button
                       type="submit"
@@ -420,129 +451,300 @@ const DoveEquitiesLanding = () => {
                     </Button>
                   </div>
                 </form>
-                <p className="text-sm text-gray-500 mt-4 text-center">Free consultation with no obligation</p>
+
+                <p className="text-sm text-gray-500 mt-4 text-center">
+                  Free consultation with no obligation
+                </p>
               </div>
+
             </div>
           </div>
         </div>
       </section>
 
       {/* Value Proposition */}
-      <section className="py-20 bg-gray-50">
+      <section 
+        className="py-20 bg-gray-50"
+        data-sb-object-id="value-prop"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Dove Equities?</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Say goodbye to dealing with multiple agents and enjoy straightforward, effortless communication aimed at ensuring your property sale is the best it can be.
+            <h2 
+              className="text-4xl font-bold text-gray-900 mb-4"
+              data-sb-field-path="valueProp.title"
+            >
+              Why Choose Dove Equities?
+            </h2>
+
+            <p 
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              data-sb-field-path="valueProp.subtitle"
+            >
+              Say goodbye to dealing with multiple agents and enjoy straightforward…
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+
+            {/* CARD 1 */}
+            <div 
+              className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              data-sb-object-id="valueProp.card1"
+            >
               <div className="bg-blue-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
                 <Clock className="text-blue-600" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Fast Closing</h3>
-              <p className="text-gray-600">Close in as little as 7 days or choose your own timeline. We work on your schedule.</p>
+
+              <h3 
+                className="text-xl font-bold text-gray-900 mb-3"
+                data-sb-field-path="valueProp.card1.title"
+              >
+                Fast Closing
+              </h3>
+
+              <p 
+                className="text-gray-600"
+                data-sb-field-path="valueProp.card1.description"
+              >
+                Close in as little as 7 days…
+              </p>
             </div>
 
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            {/* CARD 2 */}
+            <div 
+              className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              data-sb-object-id="valueProp.card2"
+            >
               <div className="bg-blue-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
                 <DollarSign className="text-blue-600" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">All Cash Offers</h3>
-              <p className="text-gray-600">No financing contingencies. Get instant cash upon purchase completion with no hidden fees.</p>
+
+              <h3 
+                className="text-xl font-bold text-gray-900 mb-3"
+                data-sb-field-path="valueProp.card2.title"
+              >
+                All Cash Offers
+              </h3>
+
+              <p 
+                className="text-gray-600"
+                data-sb-field-path="valueProp.card2.description"
+              >
+                No financing contingencies…
+              </p>
             </div>
 
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            {/* CARD 3 */}
+            <div 
+              className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              data-sb-object-id="valueProp.card3"
+            >
               <div className="bg-blue-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
                 <Home className="text-blue-600" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Any Condition</h3>
-              <p className="text-gray-600">No repairs needed. We buy houses as-is, saving you time and money on renovations.</p>
+
+              <h3 
+                className="text-xl font-bold text-gray-900 mb-3"
+                data-sb-field-path="valueProp.card3.title"
+              >
+                Any Condition
+              </h3>
+
+              <p 
+                className="text-gray-600"
+                data-sb-field-path="valueProp.card3.description"
+              >
+                No repairs needed…
+              </p>
             </div>
 
-            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            {/* CARD 4 */}
+            <div 
+              className="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              data-sb-object-id="valueProp.card4"
+            >
               <div className="bg-blue-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
                 <Shield className="text-blue-600" size={32} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">20+ Years Experience</h3>
-              <p className="text-gray-600">Proven expertise and professional service. We consistently prioritize fairness for our customers.</p>
+
+              <h3 
+                className="text-xl font-bold text-gray-900 mb-3"
+                data-sb-field-path="valueProp.card4.title"
+              >
+                20+ Years Experience
+              </h3>
+
+              <p 
+                className="text-gray-600"
+                data-sb-field-path="valueProp.card4.description"
+              >
+                Proven expertise and professional service…
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 bg-white">
+      <section 
+        id="how-it-works" 
+        className="py-20 bg-white"
+        data-sb-object-id="how-it-works"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
-            <p className="text-xl text-gray-600">Simple, transparent, and hassle-free process</p>
+            <h2 
+              className="text-4xl font-bold text-gray-900 mb-4"
+              data-sb-field-path="how.title"
+            >
+              How It Works
+            </h2>
+
+            <p 
+              className="text-xl text-gray-600"
+              data-sb-field-path="how.subtitle"
+            >
+              Simple, transparent, and hassle-free process
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-12">
-            <div className="relative">
+
+            {/* STEP 1 */}
+            <div 
+              className="relative"
+              data-sb-object-id="how.step1"
+            >
               <div className="flex items-center justify-center mb-6">
                 <div className="bg-blue-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold">
                   1
                 </div>
               </div>
-              <div 
+
+              <div
                 className="h-64 mb-6 rounded-lg bg-cover bg-center"
-                style={{ backgroundImage: `url('https://images.unsplash.com/photo-1638262052640-82e94d64664a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoYW5kc2hha2V8ZW58MHx8fHwxNzY0NTAxOTM4fDA&ixlib=rb-4.1.0&q=85')` }}
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1638262052640-82e94d64664a?...')`
+                }}
                 aria-hidden="true"
+                data-sb-field-path="how.step1.image"
               ></div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 text-center">Get Cash Offers</h3>
-              <p className="text-gray-600 text-center">
-                We purchase directly from you with no commission or extra fees. Get in touch and receive a quote within 48 hours.
+
+              <h3 
+                className="text-2xl font-bold text-gray-900 mb-3 text-center"
+                data-sb-field-path="how.step1.title"
+              >
+                Get Cash Offers
+              </h3>
+
+              <p 
+                className="text-gray-600 text-center"
+                data-sb-field-path="how.step1.description"
+              >
+                We purchase directly from you…
               </p>
             </div>
 
-            <div className="relative">
+            {/* STEP 2 */}
+            <div 
+              className="relative"
+              data-sb-object-id="how.step2"
+            >
               <div className="flex items-center justify-center mb-6">
                 <div className="bg-blue-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold">
                   2
                 </div>
               </div>
-              <div 
+
+              <div
                 className="h-64 mb-6 rounded-lg bg-cover bg-center"
-                style={{ backgroundImage: `url('https://images.unsplash.com/photo-1764344807985-571bc389b5cc?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwzfHxOZXclMjBZb3JrJTIwcmVhbCUyMGVzdGF0ZXxlbnwwfHx8fDE3NjQ1MDE5Mjl8MA&ixlib=rb-4.1.0&q=85')` }}
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1764344807985-571bc389b5cc?...')`
+                }}
                 aria-hidden="true"
+                data-sb-field-path="how.step2.image"
               ></div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 text-center">Visit Us</h3>
-              <p className="text-gray-600 text-center">
-                Schedule a walkthrough with our team. We'll inspect your property and present an irresistible cash offer with no obligation.
+
+              <h3 
+                className="text-2xl font-bold text-gray-900 mb-3 text-center"
+                data-sb-field-path="how.step2.title"
+              >
+                Visit Us
+              </h3>
+
+              <p 
+                className="text-gray-600 text-center"
+                data-sb-field-path="how.step2.description"
+              >
+                Schedule a walkthrough…
               </p>
             </div>
 
-            <div className="relative">
+            {/* STEP 3 */}
+            <div 
+              className="relative"
+              data-sb-object-id="how.step3"
+            >
               <div className="flex items-center justify-center mb-6">
                 <div className="bg-blue-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold">
                   3
                 </div>
               </div>
-              <div 
+
+              <div
                 className="h-64 mb-6 rounded-lg bg-cover bg-center"
-                style={{ backgroundImage: `url('https://images.unsplash.com/photo-1578957492858-da6516a57530?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1ODF8MHwxfHNlYXJjaHwxfHxOZXclMjBZb3JrJTIwcmVhbCUyMGVzdGF0ZXxlbnwwfHx8fDE3NjQ1MDE5Mjl8MA&ixlib=rb-4.1.0&q=85')` }}
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1578957492858-da6516a57530?...')`
+                }}
                 aria-hidden="true"
+                data-sb-field-path="how.step3.image"
               ></div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 text-center">Get Paid</h3>
-              <p className="text-gray-600 text-center">
-                We'll purchase your home within three weeks or less, hassle-free. You choose the closing date that works best for you.
+
+              <h3 
+                className="text-2xl font-bold text-gray-900 mb-3 text-center"
+                data-sb-field-path="how.step3.title"
+              >
+                Get Paid
+              </h3>
+
+              <p 
+                className="text-gray-600 text-center"
+                data-sb-field-path="how.step3.description"
+              >
+                We'll purchase your home within three weeks…
               </p>
             </div>
+
           </div>
         </div>
       </section>
 
+
       {/* Property Types */}
-      <section className="py-20 bg-gray-50">
+      <section 
+        className="py-20 bg-gray-50"
+        data-sb-object-id="propertyTypes"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">All Homes, In All Conditions</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              No matter your circumstances, we have a solution tailored for you. There are no strings attached. No open houses. No last-minute disappointments.
+            <h2 
+              className="text-4xl font-bold text-gray-900 mb-4"
+              data-sb-field-path="title"
+            >
+              All Homes, In All Conditions
+            </h2>
+
+            <p 
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+              data-sb-field-path="subtitle"
+            >
+              No matter your circumstances, we have a solution tailored for you.
+              There are no strings attached. No open houses. No last-minute 
+              disappointments.
             </p>
           </div>
 
@@ -554,14 +756,31 @@ const DoveEquitiesLanding = () => {
               { name: 'Mobile Home', icon: Home },
               { name: 'Multi Family', icon: Home },
             ].map((type, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center">
-                <type.icon className="mx-auto mb-4 text-blue-600" size={48} />
-                <h3 className="font-semibold text-gray-900">{type.name}</h3>
+              
+              <div
+                key={index}
+                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow text-center"
+                data-sb-object-id={`propertyTypes.items.${index}`}
+              >
+                <type.icon 
+                  className="mx-auto mb-4 text-blue-600" 
+                  size={48} 
+                  data-sb-field-path="icon"
+                />
+
+                <h3 
+                  className="font-semibold text-gray-900"
+                  data-sb-field-path="label"
+                >
+                  {type.name}
+                </h3>
               </div>
+
             ))}
           </div>
         </div>
       </section>
+
 
       {/* FAQ Section */}
       <section id="faq" className="py-20 bg-white">
@@ -666,13 +885,26 @@ const DoveEquitiesLanding = () => {
       </section>
 
       {/* Footer with Contact Form */}
-      <footer id="contact" className="bg-gray-900 text-white py-16">
+      <footer 
+        id="contact" 
+        className="bg-gray-900 text-white py-16"
+        data-sb-object-id="footer"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <div className="grid md:grid-cols-2 gap-12 mb-12">
+
             {/* Contact Form */}
-            <div>
-              <h3 className="text-3xl font-bold mb-6">Contact Us</h3>
+            <div data-sb-object-id="footer.contactForm">
+              <h3 
+                className="text-3xl font-bold mb-6"
+                data-sb-field-path="title"
+              >
+                Contact Us
+              </h3>
+
               <form onSubmit={handleContactSubmit} className="space-y-4">
+                {/* form is intentionally not editable */}
                 <Input
                   placeholder="Your Name"
                   value={contactForm.name}
@@ -711,24 +943,44 @@ const DoveEquitiesLanding = () => {
             </div>
 
             {/* Contact Information */}
-            <div>
+            <div data-sb-object-id="footer.contactInfo">
+              
               <div className="space-y-4">
                 <div className="flex items-start">
                   <MapPin className="mr-3 mt-1 flex-shrink-0 text-blue-400" size={20} />
-                  <p>199 Lee Avenue, Suite 157<br />Brooklyn, NY 11211</p>
+                  <p data-sb-field-path="address">
+                    199 Lee Avenue, Suite 157<br/>Brooklyn, NY 11211
+                  </p>
                 </div>
+
                 <div className="flex items-center">
                   <Mail className="mr-3 flex-shrink-0 text-blue-400" size={20} />
-                  <a href="mailto:info@doveequities.com" className="hover:text-blue-400 transition-colors">info@doveequities.com</a>
+                  <a 
+                    href="mailto:info@doveequities.com" 
+                    className="hover:text-blue-400 transition-colors"
+                    data-sb-field-path="email"
+                  >
+                    info@doveequities.com
+                  </a>
                 </div>
               </div>
 
               <div className="mt-8 pt-8 border-t border-gray-800">
-                <h4 className="font-semibold mb-3">Useful Links</h4>
-                <div className="space-y-2">
+                <h4 
+                  className="font-semibold mb-3"
+                  data-sb-field-path="linksTitle"
+                >
+                  Useful Links
+                </h4>
+
+                <div 
+                  className="space-y-2"
+                  data-sb-object-id="footer.usefulLinks"
+                >
                   <button
                     onClick={() => window.open('https://doveequities.h.trustco.ai/', '_blank')}
                     className="block hover:text-blue-400 transition-colors"
+                    data-sb-field-path="textLinks.0.label"
                   >
                     Connect Via Text
                   </button>
@@ -736,6 +988,7 @@ const DoveEquitiesLanding = () => {
                   <button
                     onClick={() => window.open('https://doveequities.h.trustco.ai/#termsArea', '_blank')}
                     className="block hover:text-blue-400 transition-colors"
+                    data-sb-field-path="textLinks.1.label"
                   >
                     Messaging T&Cs
                   </button>
@@ -743,17 +996,27 @@ const DoveEquitiesLanding = () => {
                   <button
                     onClick={() => window.open('https://doveequities.h.trustco.ai/#privacyArea', '_blank')}
                     className="block hover:text-blue-400 transition-colors"
+                    data-sb-field-path="textLinks.2.label"
                   >
                     Messaging Privacy Policy
                   </button>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm space-y-1">
-            <p>© Copyright 2024 Dove Equities</p>
 
-            <p>
+            </div>
+
+          </div>
+
+          {/* COPYRIGHT BAR */}
+          <div 
+            className="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm space-y-1"
+            data-sb-object-id="footer.bottomBar"
+          >
+            <p data-sb-field-path="copyright">
+              © Copyright 2024 Dove Equities
+            </p>
+
+            <p data-sb-field-path="legalLinks">
               <a
                 href="https://www.doveequities.com/privacy-policy"
                 target="_blank"
@@ -773,6 +1036,7 @@ const DoveEquitiesLanding = () => {
               </a>
             </p>
           </div>
+
         </div>
       </footer>
     </div>
