@@ -1,4 +1,5 @@
-export default function DoveEquitiesLanding() {
+import { CheckCircle } from "lucide-react";
+export default function Home() {
   return (
     <>
       {/* Main content wrapper */}
@@ -600,6 +601,8 @@ export default function DoveEquitiesLanding() {
           </div>
         </section>
       </main>
+      {/* Footer with Contact Form */}
+      <Footer />
     </>
   );
 }

@@ -1,4 +1,31 @@
- export default function Footer() {
+// components/Footer.jsx
+"use client";
+
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+
+export default function Footer() {
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    toast.success("Message sent! We'll get back to you soon.");
+
+    // Clear form
+    setContactForm({
+      name: "",
+      email: "",
+      message: "",
+    });
+  };
+
   return (
       <footer id="contact" className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
