@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
+import Link from "next/link";                     // ← ADD THIS
 import { Menu, X, Phone, Mail, MapPin, Home, Clock, DollarSign, Shield, CheckCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
