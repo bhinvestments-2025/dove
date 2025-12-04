@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Input } from "./Input";
-import { Button } from "./Button";
+import { Input } from "./input";
+import { Button } from "./button";
 
 export const LeadForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Input } from "./Input";
-import { Textarea } from "./Textarea";
-import { Button } from "./Button";
+import { Input } from "./input";
+import { Textarea } from "./textarea";
+import { Button } from "./button";
 
 export const ContactForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
