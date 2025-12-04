@@ -1,6 +1,6 @@
 // components/Navbar.jsx
 "use client";
-
+import LeadForm from "@/components/forms/LeadForm";
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
@@ -12,8 +12,6 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
 export default function Navbar() {
@@ -111,141 +109,10 @@ export default function Navbar() {
                                 <DialogHeader>
                                     <DialogTitle className="text-2xl font-bold text-gray-900">Get Your Cash Offer</DialogTitle>
                                 </DialogHeader>
-                                <form onSubmit={handleModalSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                                    <Input
-                                        placeholder="Full Name"
-                                        value={modalForm.name}
-                                        onChange={(e) => setModalForm({ ...modalForm, name: e.target.value })}
-                                        required
-                                    />
-                                    <Input
-                                        type="tel"
-                                        placeholder="Phone Number"
-                                        value={modalForm.phone}
-                                        onChange={(e) => setModalForm({ ...modalForm, phone: e.target.value })}
-                                        required
-                                    />
-                                    <Input
-                                        placeholder="Property Address"
-                                        value={modalForm.address}
-                                        onChange={(e) => setModalForm({ ...modalForm, address: e.target.value })}
-                                        required
-                                    />
-                                    <Input
-                                        type="email"
-                                        placeholder="Email Address"
-                                        value={modalForm.email}
-                                        onChange={(e) => setModalForm({ ...modalForm, email: e.target.value })}
-                                        required
-                                    />
-                                    <Input
-                                        type="number"
-                                        placeholder="# of Bedrooms*"
-                                        value={modalForm.bedrooms}
-                                        onChange={(e) => setModalForm({ ...modalForm, bedrooms: e.target.value })}
-                                        required
-                                    />
-                                    <Input
-                                        type="number"
-                                        placeholder="# of Bathrooms*"
-                                        value={modalForm.bathrooms}
-                                        onChange={(e) => setModalForm({ ...modalForm, bathrooms: e.target.value })}
-                                        required
-                                    />
-                                    <Input
-                                        type="number"
-                                        placeholder="# of Floors*"
-                                        value={modalForm.floors}
-                                        onChange={(e) => setModalForm({ ...modalForm, floors: e.target.value })}
-                                        required
-                                    />
-                                    <Input
-                                        type="number"
-                                        placeholder="Year of Construction*"
-                                        value={modalForm.yearBuilt}
-                                        onChange={(e) => setModalForm({ ...modalForm, yearBuilt: e.target.value })}
-                                        required
-                                    />
-                                    <Input
-                                        type="number"
-                                        placeholder="Property Area (sq ft)*"
-                                        value={modalForm.propertyArea}
-                                        onChange={(e) => setModalForm({ ...modalForm, propertyArea: e.target.value })}
-                                        required
-                                    />
-                                    <Input
-                                        type="number"
-                                        placeholder="Total Floors*"
-                                        value={modalForm.totalFloors}
-                                        onChange={(e) => setModalForm({ ...modalForm, totalFloors: e.target.value })}
-                                        required
-                                    />
-                                    <Textarea
-                                        placeholder="Write your special notes here..."
-                                        value={modalForm.notes}
-                                        onChange={(e) => setModalForm({ ...modalForm, notes: e.target.value })}
-                                        className="md:col-span-2"
-                                        rows={3}
-                                    />
-
-                                    {/* Checkboxes */}
-                                    <div className="md:col-span-2 space-y-2 text-[10px] text-gray-400 leading-relaxed">
-                                        <label className="flex items-start space-x-2">
-                                            <input
-                                                type="checkbox"
-                                                required
-                                                checked={modalForm.privacyConsent}
-                                                onChange={(e) =>
-                                                    setModalForm({ ...modalForm, privacyConsent: e.target.checked })
-                                                }
-                                            />
-                                            <span>
-                                                I have read and agree to the{" "}
-                                                <a
-                                                    href="https://doveequities.h.trustco.ai/#privacyArea"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="underline"
-                                                >
-                                                    Privacy Policy
-                                                </a>{" "}
-                                                and{" "}
-                                                <a
-                                                    href="https://doveequities.h.trustco.ai/#termsArea"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="underline"
-                                                >
-                                                    Terms and Conditions
-                                                </a>
-                                                .
-                                            </span>
-                                        </label>
-
-                                        <label className="flex items-start space-x-2">
-                                            <input
-                                                type="checkbox"
-                                                checked={modalForm.smsConsent}
-                                                onChange={(e) =>
-                                                    setModalForm({ ...modalForm, smsConsent: e.target.checked })
-                                                }
-                                            />
-                                            <span>
-                                                By submitting the contact form and signing up for texts, you consent to
-                                                receive marketing text messages from Dove Equities at the number provided. Message frequency varies. Reply STOP to unsubscribe.
-                                            </span>
-                                        </label>
-                                    </div>
-
-                                    <div className="md:col-span-2">
-                                        <Button
-                                            type="submit"
-                                            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                                        >
-                                            Submit Request
-                                        </Button>
-                                    </div>
-                                </form>
+                                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                                    <LeadForm onSubmit={(data) => handleModalSubmit(data)} />
+                                </Modal>
+                                    
                             </DialogContent>
                         </Dialog>
                     </nav>
