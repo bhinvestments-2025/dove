@@ -97,8 +97,8 @@ const DoveEquitiesLanding = () => {
               <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-blue-600 transition-colors">Contact</button>
 
               {/* New buttons */}
-              <button onClick={() => scrollToSection('features')} className="text-gray-700 hover:text-blue-600 transition-colors">Features</button>
-              <button onClick={() => scrollToSection('portfolio')} className="text-gray-700 hover:text-blue-600 transition-colors">Portfolio</button>
+              <Link href="/features" className="text-gray-700 hover:text-blue-600 transition-colors">Features</Link>
+              <Link href="/portfolio" className="text-gray-700 hover:text-blue-600 transition-colors">Portfolio</Link>
               {/* Get Cash Offer Dialog */}
               <Dialog open={modalOpen} onOpenChange={setModalOpen}>
                 <DialogTrigger asChild>
@@ -223,11 +223,11 @@ const DoveEquitiesLanding = () => {
                         />
                         <span>
                           I have read and agree to the{" "}
-                          <a href="https://www.doveequities.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline">
+                          <a href="https://doveequities.h.trustco.ai/#privacyArea" target="_blank" rel="noopener noreferrer" className="underline">
                             Privacy Policy
                           </a>{" "}
                           and{" "}
-                          <a href="https://www.doveequities.com/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="underline">
+                          <a href="https://doveequities.h.trustco.ai/#termsArea" target="_blank" rel="noopener noreferrer" className="underline">
                             Terms and Conditions
                           </a>.
                         </span>
@@ -950,21 +950,21 @@ const DoveEquitiesLanding = () => {
                 <div className="space-y-2">
                   <button
                     onClick={() => window.open('https://doveequities.h.trustco.ai/', '_blank')}
-                    className="block hover:text-blue-400 transition-colors"
+                    className="block hover:text-blue-400 transition-colors underline"
                   >
                     Connect Via Text
                   </button>
 
                   <button
                     onClick={() => window.open('https://doveequities.h.trustco.ai/#termsArea', '_blank')}
-                    className="block hover:text-blue-400 transition-colors"
+                    className="block hover:text-blue-400 transition-colors underline"
                   >
                     Messaging T&Cs
                   </button>
 
                   <button
                     onClick={() => window.open('https://doveequities.h.trustco.ai/#privacyArea', '_blank')}
-                    className="block hover:text-blue-400 transition-colors"
+                    className="block hover:text-blue-400 transition-colors underline"
                   >
                     Messaging Privacy Policy
                   </button>
@@ -977,7 +977,7 @@ const DoveEquitiesLanding = () => {
 
             <p>
               <a
-                href="https://www.doveequities.com/privacy-policy"
+                href="https://doveequities.h.trustco.ai/#privacyArea"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline"
@@ -986,7 +986,7 @@ const DoveEquitiesLanding = () => {
               </a>
               {" "} | {" "}
               <a
-                href="https://www.doveequities.com/terms-and-conditions"
+                href="https://doveequities.h.trustco.ai/#termsArea"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline"
