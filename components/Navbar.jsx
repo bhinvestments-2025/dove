@@ -3,12 +3,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-    Menu,
-    X,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+    Dialog,
+    DialogContent,
+    DialogTrigger,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
@@ -35,7 +38,9 @@ export default function Navbar() {
 
     const handleModalSubmit = (e) => {
         e.preventDefault();
-        toast.success("Cash offer request submitted! We’ll reach out within 24 hours.");
+        toast.success(
+            "Cash offer request submitted! We’ll reach out within 24 hours."
+        );
         setModalForm({
             name: "",
             phone: "",
@@ -56,9 +61,7 @@ export default function Navbar() {
 
     const scrollToSection = (id) => {
         const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
+        if (element) element.scrollIntoView({ behavior: "smooth" });
         setMobileMenuOpen(false);
     };
 

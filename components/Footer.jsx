@@ -1,28 +1,30 @@
-// components/Footer.jsx
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { MapPin } from "lucide-react";
 
 export default function Footer() {
   const [contactForm, setContactForm] = useState({
     name: "",
     email: "",
     message: "",
+    privacyConsent: false,
+    smsConsent: false,
   });
 
   const handleContactSubmit = (e) => {
     e.preventDefault();
     toast.success("Message sent! We'll get back to you soon.");
-
-    // Clear form
     setContactForm({
       name: "",
       email: "",
       message: "",
+      privacyConsent: false,
+      smsConsent: false,
     });
   };
 
