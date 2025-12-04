@@ -20,7 +20,7 @@ export default function PortfolioPage() {
 
   return (
     <div className="container mx-auto py-16">
-      <h1 className="text-4xl font-bold mb-10">Our Portfolio</h1>
+      <h1 className="text-4xl font-bold mb-10 text-center">Our Portfolio</h1>
       <PortfolioGrid properties={properties} />
     </div>
   );

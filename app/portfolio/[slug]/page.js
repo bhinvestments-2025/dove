@@ -33,9 +33,7 @@ async function getPropertyData(slug) {
   };
 }
 
-/* -------------------------------
-   ✅ App Router SEO Metadata
--------------------------------- */
+// App Router SEO Metadata
 export async function generateMetadata({ params }) {
   const property = await getPropertyData(params.slug);
   if (!property) return {};
@@ -51,9 +49,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-/* -------------------------------
-   ✅ Main Page Component
--------------------------------- */
+// Main Page Component
 export default async function PropertyPage({ params }) {
   const property = await getPropertyData(params.slug);
 
@@ -80,7 +76,7 @@ export default async function PropertyPage({ params }) {
 
   return (
     <>
-      {/* JSON-LD injected directly */}
+      {/* JSON-LD for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
