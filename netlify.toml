@@ -1,9 +1,10 @@
 [build]
-  command = "corepack enable && yarn install && yarn build"
+  command = "yarn install && yarn build"
+  publish = ".next"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
 [build.environment]
-  YARN_ENABLE_IMMUTABLE_INSTALLS = "false"
   NODE_VERSION = "20"
+  YARN_ENABLE_IMMUTABLE_INSTALLS = "false"
