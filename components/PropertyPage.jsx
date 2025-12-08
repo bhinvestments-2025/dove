@@ -23,6 +23,13 @@ export default function PropertyPage({ property }) {
         <strong>Price:</strong> {property.price}
       </div>
 
+      {/* Beds / Baths / SqFt */}
+      <div className="flex gap-6 text-gray-700 text-lg mb-8">
+        {property.bed && <p><strong>Beds:</strong> {property.bed}</p>}
+        {property.bath && <p><strong>Baths:</strong> {property.bath}</p>}
+        {property.sqft && <p><strong>Sq Ft:</strong> {property.sqft}</p>}
+      </div>
+
       <div
         className="prose max-w-none"
         dangerouslySetInnerHTML={{ __html: property.bodyHtml }}

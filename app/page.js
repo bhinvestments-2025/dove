@@ -1,296 +1,14 @@
 'use client'
 
-import React, { useState } from 'react';
-import Link from "next/link";                     // ← ADD THIS
-import { Menu, X, Phone, Mail, MapPin, Home, Clock, DollarSign, Shield, CheckCircle, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { toast } from 'sonner';
+import React, { useState } from "react"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
 
-const DoveEquitiesLanding = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-
-  // Form states
-  const [heroForm, setHeroForm] = useState({ name: '', phone: '', address: '', email: '' }); 
-  
-  const [modalForm, setModalForm] = useState({ 
-    name: '', 
-    phone: '', 
-    address: '', 
-    email: '',
-    bedrooms: '',
-    bathrooms: '',
-    floors: '',
-    yearBuilt: '',
-    propertyArea: '',
-    totalFloors: '',
-    notes: '',
-    privacyConsent: false,
-    smsConsent: false
-  });
-  
-  const [contactForm, setContactForm] = useState({ name: '', email: '', phone: '', message: '' });
-
-  const handleHeroSubmit = (e) => {
-    e.preventDefault();
-    toast.success('Thank you! We will contact you within 24 hours.');
-    setHeroForm({ name: '', phone: '', address: '', email: '' });
-  };
-
-  const handleModalSubmit = (e) => {
-    e.preventDefault();
-    toast.success('Cash offer request submitted! We\'ll reach out within 24 hours.');
-    setModalForm({ 
-      name: '', 
-      phone: '', 
-      address: '', 
-      email: '',
-      bedrooms: '',
-      bathrooms: '',
-      floors: '',
-      yearBuilt: '',
-      propertyArea: '',
-      totalFloors: '',
-      notes: '',
-      privacyConsent: false,
-      smsConsent: false
-    });
-    setModalOpen(false);
-  };
-
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
-    toast.success('Message sent! We\'ll get back to you soon.');
-    setContactForm({ name: '', email: '', phone: '', message: '' });
-  };
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setMobileMenuOpen(false);
-  };
+export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <img 
-                src="https://customer-assets.emergentagent.com/job_7ee4cd2f-500b-4046-9ef5-6c05f3003821/artifacts/m0ldjtz1_Site%20Logo.png" 
-                alt="Dove Equities Logo" 
-                className="h-12 w-auto"
-              />
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-blue-600 transition-colors">Home</button>
-              <button onClick={() => scrollToSection('how-it-works')} className="text-gray-700 hover:text-blue-600 transition-colors">How It Works</button>
-              <button onClick={() => scrollToSection('faq')} className="text-gray-700 hover:text-blue-600 transition-colors">FAQ</button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-blue-600 transition-colors">Contact</button>
-
-              {/* New buttons */}
-              <Link href="/features" className="text-gray-700 hover:text-blue-600 transition-colors">Features</Link>
-              <Link href="/portfolio" className="text-gray-700 hover:text-blue-600 transition-colors">Portfolio</Link>
-              {/* Get Cash Offer Dialog */}
-              <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-                <DialogTrigger asChild>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                    Get Cash Offer
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold text-gray-900">Get Your Cash Offer</DialogTitle>
-                  </DialogHeader>
-                  <form onSubmit={handleModalSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                    {/* Full Name */}
-                    <Input
-                      placeholder="Full Name"
-                      value={modalForm.name}
-                      onChange={(e) => setModalForm({ ...modalForm, name: e.target.value })}
-                      required
-                    />
-
-                    {/* Phone */}
-                    <Input
-                      type="tel"
-                      placeholder="Phone Number"
-                      value={modalForm.phone}
-                      onChange={(e) => setModalForm({ ...modalForm, phone: e.target.value })}
-                      required
-                    />
-
-                    {/* Address */}
-                    <Input
-                      placeholder="Property Address"
-                      value={modalForm.address}
-                      onChange={(e) => setModalForm({ ...modalForm, address: e.target.value })}
-                      required
-                    />
-
-                    {/* Email */}
-                    <Input
-                      type="email"
-                      placeholder="Email Address"
-                      value={modalForm.email}
-                      onChange={(e) => setModalForm({ ...modalForm, email: e.target.value })}
-                      required
-                    />
-
-                    {/* Bedrooms */}
-                    <Input
-                      type="number"
-                      placeholder="# of Bedrooms*"
-                      value={modalForm.bedrooms}
-                      onChange={(e) => setModalForm({ ...modalForm, bedrooms: e.target.value })}
-                      required
-                    />
-
-                    {/* Bathrooms */}
-                    <Input
-                      type="number"
-                      placeholder="# of Bathrooms*"
-                      value={modalForm.bathrooms}
-                      onChange={(e) => setModalForm({ ...modalForm, bathrooms: e.target.value })}
-                      required
-                    />
-
-                    {/* Floors */}
-                    <Input
-                      type="number"
-                      placeholder="# of Floors*"
-                      value={modalForm.floors}
-                      onChange={(e) => setModalForm({ ...modalForm, floors: e.target.value })}
-                      required
-                    />
-
-                    {/* Year Built */}
-                    <Input
-                      type="number"
-                      placeholder="Year of Construction*"
-                      value={modalForm.yearBuilt}
-                      onChange={(e) => setModalForm({ ...modalForm, yearBuilt: e.target.value })}
-                      required
-                    />
-
-                    {/* Property Area */}
-                    <Input
-                      type="number"
-                      placeholder="Property Area (sq ft)*"
-                      value={modalForm.propertyArea}
-                      onChange={(e) => setModalForm({ ...modalForm, propertyArea: e.target.value })}
-                      required
-                    />
-
-                    {/* Total Floors (building) */}
-                    <Input
-                      type="number"
-                      placeholder="Total Floors*"
-                      value={modalForm.totalFloors}
-                      onChange={(e) => setModalForm({ ...modalForm, totalFloors: e.target.value })}
-                      required
-                    />
-
-                    {/* Notes section - full width */}
-                    <Textarea
-                      placeholder="Write your special notes here..."
-                      value={modalForm.notes}
-                      onChange={(e) => setModalForm({ ...modalForm, notes: e.target.value })}
-                      className="md:col-span-2"
-                      rows={3}
-                    />
-
-                    {/* CHECKBOXES */}
-                    <div className="md:col-span-2 space-y-2 text-[10px] text-gray-400 leading-relaxed">
-
-                      {/* Required Checkbox */}
-                      <label className="flex items-start space-x-2">
-                        <input
-                          type="checkbox"
-                          required
-                          checked={modalForm.privacyConsent}
-                          onChange={(e) =>
-                            setModalForm({ ...modalForm, privacyConsent: e.target.checked })
-                          }
-                        />
-                        <span>
-                          I have read and agree to the{" "}
-                          <a href="https://doveequities.h.trustco.ai/#privacyArea" target="_blank" rel="noopener noreferrer" className="underline">
-                            Privacy Policy
-                          </a>{" "}
-                          and{" "}
-                          <a href="https://doveequities.h.trustco.ai/#termsArea" target="_blank" rel="noopener noreferrer" className="underline">
-                            Terms and Conditions
-                          </a>.
-                        </span>
-                      </label>
-
-                      {/* Optional Checkbox */}
-                      <label className="flex items-start space-x-2">
-                        <input
-                          type="checkbox"
-                          checked={modalForm.smsConsent}
-                          onChange={(e) =>
-                            setModalForm({ ...modalForm, smsConsent: e.target.checked })
-                          }
-                        />
-                        <span>
-                          By submitting the contact form and signing up for texts, you consent to
-                          receive marketing text messages from Dove Equities at the number
-                          provided. Message frequency varies. Reply STOP to unsubscribe.
-                        </span>
-                      </label>
-                    </div>
-
-                    {/* SUBMIT BUTTON */}
-                    <div className="md:col-span-2">
-                      <Button
-                        type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                      >
-                        Submit Request
-                      </Button>
-                    </div>
-                  </form>
-
-                </DialogContent>
-              </Dialog>
-            </nav>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-gray-700"
-              aria-label="Toggle mobile menu"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <div className="md:hidden py-4 space-y-4">
-              <button onClick={() => scrollToSection('home')} className="block w-full text-left text-gray-700 hover:text-blue-600">Home</button>
-              <button onClick={() => scrollToSection('how-it-works')} className="block w-full text-left text-gray-700 hover:text-blue-600">How It Works</button>
-              <button onClick={() => scrollToSection('faq')} className="block w-full text-left text-gray-700 hover:text-blue-600">FAQ</button>
-              <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-gray-700 hover:text-blue-600">Contact</button>
-              <Button onClick={() => { setModalOpen(true); setMobileMenuOpen(false); }} className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                Get Cash Offer
-              </Button>
-            </div>
-          )}
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section 
         id="home" 
@@ -377,7 +95,7 @@ const DoveEquitiesLanding = () => {
                 </p>
 
                 {/* Form remains unchanged */}
-                <form onSubmit={handleModalSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <form name="hero" data-netlify="true" onSubmit={handleModalSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                   <Input
                     placeholder="Full Name"
                     value={modalForm.name}
@@ -440,7 +158,7 @@ const DoveEquitiesLanding = () => {
                         }
                       />
                       <span>
-                        By submitting the contact form…
+                        By submitting the contact form and signing up for texts, you consent to receive marketing text messages from Dove Equities at the number provided. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. You can unsubscribe at any time by replying STOP. Text HELP to get help. Please read our <a href="https://doveequities.h.trustco.ai/#privacyArea" target="_blank" rel="noopener noreferrer" className="underline"> Privacy Policy </a>{" "} for more details.
                       </span>
                     </label>
                   </div>
@@ -592,139 +310,110 @@ const DoveEquitiesLanding = () => {
 
 
       {/* How It Works */}
-      <section 
-        id="how-it-works" 
+      <section
+        id="how-it-works"
         className="py-20 bg-white"
         data-sb-object-id="how-it-works"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
           <div className="text-center mb-16">
-            <h2 
+            <h2
               className="text-4xl font-bold text-gray-900 mb-4"
               data-sb-field-path="how.title"
             >
               How It Works
             </h2>
 
-            <p 
+            <p
               className="text-xl text-gray-600"
               data-sb-field-path="how.subtitle"
             >
-              Simple, transparent, and hassle-free process
+              Simple, transparent, and hassle-free process</p>
+            <div className="mt-8"></div><p>
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-12">
 
-            {/* STEP 1 */}
-            <div 
+            <div
               className="relative"
               data-sb-object-id="how.step1"
             >
               <div className="flex items-center justify-center mb-6">
-                <div className="bg-blue-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold">
-                  1
-                </div>
+                <img src="/icons/step-1-form-submit.svg" alt="Step 1 Icon" className="w-20 h-20 mb-6" />
               </div>
 
-              <div
-                className="h-64 mb-6 rounded-lg bg-cover bg-center"
-                style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1638262052640-82e94d64664a?...')`
-                }}
-                aria-hidden="true"
-                data-sb-field-path="how.step1.image"
-              ></div>
 
-              <h3 
+
+              <h3
                 className="text-2xl font-bold text-gray-900 mb-3 text-center"
                 data-sb-field-path="how.step1.title"
               >
-                Get Cash Offers
+                Receive Your Offer
               </h3>
 
-              <p 
+              <p
                 className="text-gray-600 text-center"
                 data-sb-field-path="how.step1.description"
               >
-                We purchase directly from you…
+                Connect with us directly - no commissions, no extra charges. Receive your competitive cash quote within 24 hours.
               </p>
             </div>
 
-            {/* STEP 2 */}
-            <div 
+            <div
               className="relative"
               data-sb-object-id="how.step2"
             >
               <div className="flex items-center justify-center mb-6">
-                <div className="bg-blue-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold">
-                  2
-                </div>
+                <img src="/icons/step-2-house-walkthrough.svg" alt="Step 2 Icon" className="w-20 h-20 mb-6" />
               </div>
 
-              <div
-                className="h-64 mb-6 rounded-lg bg-cover bg-center"
-                style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1764344807985-571bc389b5cc?...')`
-                }}
-                aria-hidden="true"
-                data-sb-field-path="how.step2.image"
-              ></div>
 
-              <h3 
+
+              <h3
                 className="text-2xl font-bold text-gray-900 mb-3 text-center"
                 data-sb-field-path="how.step2.title"
               >
-                Visit Us
+                Property Walkthrough
               </h3>
 
-              <p 
+              <p
                 className="text-gray-600 text-center"
                 data-sb-field-path="how.step2.description"
               >
-                Schedule a walkthrough…
+                Schedule a convenient property inspection with our professional team. We'll present a compelling cash offer with zero obligation.
               </p>
             </div>
 
-            {/* STEP 3 */}
-            <div 
+            <div
               className="relative"
               data-sb-object-id="how.step3"
             >
               <div className="flex items-center justify-center mb-6">
-                <div className="bg-blue-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold">
-                  3
-                </div>
+                <img src="/icons/step-3-money-handshake.svg" alt="Step 3 Icon" className="w-20 h-20 mb-6" />
               </div>
 
-              <div
-                className="h-64 mb-6 rounded-lg bg-cover bg-center"
-                style={{
-                  backgroundImage: `url('https://images.unsplash.com/photo-1578957492858-da6516a57530?...')`
-                }}
-                aria-hidden="true"
-                data-sb-field-path="how.step3.image"
-              ></div>
 
-              <h3 
+
+              <h3
                 className="text-2xl font-bold text-gray-900 mb-3 text-center"
                 data-sb-field-path="how.step3.title"
               >
-                Get Paid
+                Close & Get Paid
               </h3>
 
-              <p 
+              <p
                 className="text-gray-600 text-center"
                 data-sb-field-path="how.step3.description"
               >
-                We'll purchase your home within three weeks…
+                We'll finalize your home purchase within three weeks or less, completely hassle-free. Select the closing date that works best for your schedule.
               </p>
             </div>
 
           </div>
         </div>
       </section>
+
 
 
       {/* Property Types */}
@@ -887,119 +576,6 @@ const DoveEquitiesLanding = () => {
           </Accordion>
         </div>
       </section>
-
-      {/* Footer with Contact Form */}
-      <footer id="contact" className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 mb-12">
-            {/* Contact Form */}
-            <div>
-              <h3 className="text-3xl font-bold mb-6">Contact Us</h3>
-              <form onSubmit={handleContactSubmit} className="space-y-4">
-                <Input
-                  placeholder="Your Name"
-                  value={contactForm.name}
-                  onChange={(e) => setContactForm({...contactForm, name: e.target.value})}
-                  required
-                  className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
-                />
-                <Input
-                  type="email"
-                  placeholder="Email Address"
-                  value={contactForm.email}
-                  onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
-                  required
-                  className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
-                />
-                <Input
-                  type="tel"
-                  placeholder="Phone Number"
-                  value={contactForm.phone}
-                  onChange={(e) => setContactForm({...contactForm, phone: e.target.value})}
-                  required
-                  className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
-                />
-                <Textarea
-                  placeholder="Your Message"
-                  value={contactForm.message}
-                  onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
-                  required
-                  rows={4}
-                  className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
-                />
-                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                  Send Message
-                </Button>
-              </form>
-            </div>
-
-            {/* Contact Information */}
-            <div>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <MapPin className="mr-3 mt-1 flex-shrink-0 text-blue-400" size={20} />
-                  <p>199 Lee Avenue, Suite 157<br />Brooklyn, NY 11211</p>
-                </div>
-                <div className="flex items-center">
-                  <Mail className="mr-3 flex-shrink-0 text-blue-400" size={20} />
-                  <a href="mailto:info@doveequities.com" className="hover:text-blue-400 transition-colors">info@doveequities.com</a>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-8 border-t border-gray-800">
-                <h4 className="font-semibold mb-3">Useful Links</h4>
-                <div className="space-y-2">
-                  <button
-                    onClick={() => window.open('https://doveequities.h.trustco.ai/', '_blank')}
-                    className="block hover:text-blue-400 transition-colors underline"
-                  >
-                    Connect Via Text
-                  </button>
-
-                  <button
-                    onClick={() => window.open('https://doveequities.h.trustco.ai/#termsArea', '_blank')}
-                    className="block hover:text-blue-400 transition-colors underline"
-                  >
-                    Messaging T&Cs
-                  </button>
-
-                  <button
-                    onClick={() => window.open('https://doveequities.h.trustco.ai/#privacyArea', '_blank')}
-                    className="block hover:text-blue-400 transition-colors underline"
-                  >
-                    Messaging Privacy Policy
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-6 text-center text-gray-400 text-sm space-y-1">
-            <p>© Copyright 2024 Dove Equities</p>
-
-            <p>
-              <a
-                href="https://doveequities.h.trustco.ai/#privacyArea"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                Privacy Policy
-              </a>
-              {" "} | {" "}
-              <a
-                href="https://doveequities.h.trustco.ai/#termsArea"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                Terms and Conditions
-              </a>
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
-
-export default DoveEquitiesLanding;

@@ -27,9 +27,10 @@ export default function PropertyCard({ property }) {
           </p>
         )}
 
+        {/* Beds / Baths / SqFt */}
         <div className="mt-3 text-sm text-gray-500">
-          {property.beds && <span>{property.beds} beds • </span>}
-          {property.baths && <span>{property.baths} baths • </span>}
+          {property.bed && <span>{property.bed} beds • </span>}
+          {property.bath && <span>{property.bath} baths • </span>}
           {property.sqft && <span>{property.sqft} sqft</span>}
         </div>
       </div>
