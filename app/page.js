@@ -138,14 +138,27 @@ export default function HomePage() {
                 </p>
 
                 {/* Form remains unchanged */}
-                <form name="hero" data-netlify="true" onSubmit={handleModalSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                <form
+                  name="hero"
+                  method="POST"
+                  action="/"
+                  data-netlify="true"
+                  onSubmit={handleModalSubmit}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"
+                >
+                  {/* REQUIRED FOR NETLIFY */}
+                  <input type="hidden" name="form-name" value="hero" />
+
                   <Input
+                    name="name"
                     placeholder="Full Name"
                     value={modalForm.name}
                     onChange={(e) => setModalForm({ ...modalForm, name: e.target.value })}
                     required
                   />
+
                   <Input
+                    name="phone"
                     type="tel"
                     placeholder="Phone Number"
                     value={modalForm.phone}
@@ -154,12 +167,15 @@ export default function HomePage() {
                   />
 
                   <Input
+                    name="address"
                     placeholder="Property Address"
                     value={modalForm.address}
                     onChange={(e) => setModalForm({ ...modalForm, address: e.target.value })}
                     required
                   />
+
                   <Input
+                    name="email"
                     type="email"
                     placeholder="Email Address"
                     value={modalForm.email}
@@ -172,6 +188,7 @@ export default function HomePage() {
                     {/* Required Checkbox */}
                     <label className="flex items-start space-x-2">
                       <input
+                        name="privacyConsent"
                         type="checkbox"
                         required
                         checked={modalForm.privacyConsent}
@@ -181,11 +198,21 @@ export default function HomePage() {
                       />
                       <span>
                         I have read and agree to the{" "}
-                        <a href="https://www.doveequities.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="underline">
+                        <a
+                          href="https://www.doveequities.com/privacy-policy"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline"
+                        >
                           Privacy Policy
                         </a>{" "}
                         and{" "}
-                        <a href="https://www.doveequities.com/terms-and-conditions" target="_blank" rel="noopener noreferrer" className="underline">
+                        <a
+                          href="https://www.doveequities.com/terms-and-conditions"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline"
+                        >
                           Terms and Conditions
                         </a>.
                       </span>
@@ -194,6 +221,7 @@ export default function HomePage() {
                     {/* Optional Checkbox */}
                     <label className="flex items-start space-x-2">
                       <input
+                        name="smsConsent"
                         type="checkbox"
                         checked={modalForm.smsConsent}
                         onChange={(e) =>
@@ -201,7 +229,20 @@ export default function HomePage() {
                         }
                       />
                       <span>
-                        By submitting the contact form and signing up for texts, you consent to receive marketing text messages from Dove Equities at the number provided. Consent is not a condition of purchase. Message frequency varies. Message and data rates may apply. You can unsubscribe at any time by replying STOP. Text HELP to get help. Please read our <a href="https://doveequities.h.trustco.ai/#privacyArea" target="_blank" rel="noopener noreferrer" className="underline"> Privacy Policy </a>{" "} for more details.
+                        By submitting the contact form and signing up for texts, you consent to
+                        receive marketing text messages from Dove Equities at the number
+                        provided. Consent is not a condition of purchase. Message frequency
+                        varies. Message and data rates may apply. You can unsubscribe at any time
+                        by replying STOP. Text HELP to get help. Please read our{" "}
+                        <a
+                          href="https://doveequities.h.trustco.ai/#privacyArea"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline"
+                        >
+                          Privacy Policy
+                        </a>{" "}
+                        for more details.
                       </span>
                     </label>
                   </div>
@@ -216,6 +257,7 @@ export default function HomePage() {
                     </Button>
                   </div>
                 </form>
+
 
                 <p className="text-sm text-gray-500 mt-4 text-center">
                   Free consultation with no obligation

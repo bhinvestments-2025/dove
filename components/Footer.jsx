@@ -38,50 +38,71 @@ export default function Footer() {
             <h3 className="text-3xl font-bold mb-6">Contact Us</h3>
 
             <form
-              name="contact"
-              data-netlify="true"
-              onSubmit={handleContactSubmit}
-              className="space-y-4"
+                name="contact"
+                method="POST"
+                action="/"
+                data-netlify="true"
+                onSubmit={handleContactSubmit}
+                className="space-y-4"
             >
-              <Input
+            {/* REQUIRED FOR NETLIFY */}
+            <input type="hidden" name="form-name" value="contact" />
+
+            <Input
+                name="name"
                 placeholder="Your Name"
                 value={contactForm.name}
-                onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                onChange={(e) =>
+                setContactForm({ ...contactForm, name: e.target.value })
+                }
                 required
                 className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
-              />
+            />
 
-              <Input
+            <Input
+                name="email"
                 type="email"
                 placeholder="Email Address"
                 value={contactForm.email}
-                onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                onChange={(e) =>
+                setContactForm({ ...contactForm, email: e.target.value })
+                }
                 required
                 className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
-              />
+            />
 
-              <Input
+            <Input
+                name="phone"
                 type="tel"
                 placeholder="Phone Number"
                 value={contactForm.phone}
-                onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
+                onChange={(e) =>
+                setContactForm({ ...contactForm, phone: e.target.value })
+                }
                 required
                 className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
-              />
+            />
 
-              <Textarea
+            <Textarea
+                name="message"
                 placeholder="Your Message"
                 rows={4}
                 value={contactForm.message}
-                onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                onChange={(e) =>
+                setContactForm({ ...contactForm, message: e.target.value })
+                }
                 required
                 className="bg-gray-800 border-gray-700 text-white placeholder:text-gray-400"
-              />
+            />
 
-              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+            <Button
+                type="submit"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+            >
                 Send Message
-              </Button>
+            </Button>
             </form>
+
           </div>
 
           {/* Contact Information */}

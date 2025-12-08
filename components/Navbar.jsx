@@ -36,28 +36,50 @@ export default function Navbar() {
     smsConsent: false,
   })
 
-  const handleModalSubmit = (e) => {
+  const encode = (data) =>
+  Object.keys(data)
+    .map(
+      (key) =>
+        encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+    )
+    .join("&")
+
+    const handleModalSubmit = async (e) => {
     e.preventDefault()
-    toast.success("Cash offer request submitted! We'll reach out within 24 hours.")
+    const form = e.target
+    const formData = new FormData(form)
 
-    setModalForm({
-      name: "",
-      phone: "",
-      address: "",
-      email: "",
-      bedrooms: "",
-      bathrooms: "",
-      floors: "",
-      yearBuilt: "",
-      propertyArea: "",
-      totalFloors: "",
-      notes: "",
-      privacyConsent: false,
-      smsConsent: false,
-    })
+    try {
+        await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+            "form-name": form.getAttribute("name"),
+            ...Object.fromEntries(formData),
+        }),
+        })
 
-    setModalOpen(false)
-  }
+        toast.success("Cash offer request submitted!")
+
+        setModalForm({
+        name: "",
+        phone: "",
+        address: "",
+        email: "",
+        bedrooms: "",
+        bathrooms: "",
+        floors: "",
+        yearBuilt: "",
+        propertyArea: "",
+        totalFloors: "",
+        notes: "",
+        privacyConsent: false,
+        smsConsent: false,
+        })
+    } catch (error) {
+        toast.error("Submission failed. Please try again.")
+    }
+    }
 
   return (
     <header className="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
@@ -97,85 +119,156 @@ export default function Navbar() {
                 </DialogHeader>
 
                 <form
-                  name="pop-up"
-                  data-netlify="true"
-                  onSubmit={handleModalSubmit}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"
+                    name="pop-up"
+                    method="POST"
+                    action="/"
+                    data-netlify="true"
+                    onSubmit={handleModalSubmit}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"
                 >
-                  <Input placeholder="Full Name" value={modalForm.name} 
-                    onChange={(e)=> setModalForm({...modalForm, name:e.target.value})} required />
+                {/* REQUIRED FOR NETLIFY */}
+                <input type="hidden" name="form-name" value="pop-up" />
 
-                  <Input type="tel" placeholder="Phone Number" value={modalForm.phone}
-                    onChange={(e)=> setModalForm({...modalForm, phone:e.target.value})} required />
+                <Input
+                    name="name"
+                    placeholder="Full Name"
+                    value={modalForm.name}
+                    onChange={(e) => setModalForm({ ...modalForm, name: e.target.value })}
+                    required
+                />
 
-                  <Input placeholder="Property Address" value={modalForm.address}
-                    onChange={(e)=> setModalForm({...modalForm, address:e.target.value})} required />
+                <Input
+                    name="phone"
+                    type="tel"
+                    placeholder="Phone Number"
+                    value={modalForm.phone}
+                    onChange={(e) => setModalForm({ ...modalForm, phone: e.target.value })}
+                    required
+                />
 
-                  <Input type="email" placeholder="Email Address" value={modalForm.email}
-                    onChange={(e)=> setModalForm({...modalForm, email:e.target.value})} required />
+                <Input
+                    name="address"
+                    placeholder="Property Address"
+                    value={modalForm.address}
+                    onChange={(e) => setModalForm({ ...modalForm, address: e.target.value })}
+                    required
+                />
 
-                  <Input type="number" placeholder="# of Bedrooms*" value={modalForm.bedrooms}
-                    onChange={(e)=> setModalForm({...modalForm, bedrooms:e.target.value})}
-                    required />
+                <Input
+                    name="email"
+                    type="email"
+                    placeholder="Email Address"
+                    value={modalForm.email}
+                    onChange={(e) => setModalForm({ ...modalForm, email: e.target.value })}
+                    required
+                />
 
-                  <Input type="number" placeholder="# of Bathrooms*" value={modalForm.bathrooms}
-                    onChange={(e)=> setModalForm({...modalForm, bathrooms:e.target.value})}
-                    required />
+                <Input
+                    name="bedrooms"
+                    type="number"
+                    placeholder="# of Bedrooms*"
+                    value={modalForm.bedrooms}
+                    onChange={(e) => setModalForm({ ...modalForm, bedrooms: e.target.value })}
+                    required
+                />
 
-                  <Input type="number" placeholder="# of Floors*" value={modalForm.floors}
-                    onChange={(e)=> setModalForm({...modalForm, floors:e.target.value})}
-                    required />
+                <Input
+                    name="bathrooms"
+                    type="number"
+                    placeholder="# of Bathrooms*"
+                    value={modalForm.bathrooms}
+                    onChange={(e) => setModalForm({ ...modalForm, bathrooms: e.target.value })}
+                    required
+                />
 
-                  <Input type="number" placeholder="Year of Construction*" value={modalForm.yearBuilt}
-                    onChange={(e)=> setModalForm({...modalForm, yearBuilt:e.target.value})}
-                    required />
+                <Input
+                    name="floors"
+                    type="number"
+                    placeholder="# of Floors*"
+                    value={modalForm.floors}
+                    onChange={(e) => setModalForm({ ...modalForm, floors: e.target.value })}
+                    required
+                />
 
-                  <Input type="number" placeholder="Property Area (sq ft)*" value={modalForm.propertyArea}
-                    onChange={(e)=> setModalForm({...modalForm, propertyArea:e.target.value})}
-                    required />
+                <Input
+                    name="yearBuilt"
+                    type="number"
+                    placeholder="Year of Construction*"
+                    value={modalForm.yearBuilt}
+                    onChange={(e) => setModalForm({ ...modalForm, yearBuilt: e.target.value })}
+                    required
+                />
 
-                  <Input type="number" placeholder="Total Floors*" value={modalForm.totalFloors}
-                    onChange={(e)=> setModalForm({...modalForm, totalFloors:e.target.value})}
-                    required />
+                <Input
+                    name="propertyArea"
+                    type="number"
+                    placeholder="Property Area (sq ft)*"
+                    value={modalForm.propertyArea}
+                    onChange={(e) =>
+                    setModalForm({ ...modalForm, propertyArea: e.target.value })
+                    }
+                    required
+                />
 
-                  <Textarea
+                <Input
+                    name="totalFloors"
+                    type="number"
+                    placeholder="Total Floors*"
+                    value={modalForm.totalFloors}
+                    onChange={(e) =>
+                    setModalForm({ ...modalForm, totalFloors: e.target.value })
+                    }
+                    required
+                />
+
+                <Textarea
+                    name="notes"
                     placeholder="Write your special notes here..."
                     value={modalForm.notes}
-                    onChange={(e) => setModalForm({ ...modalForm, notes: e.target.value })}
+                    onChange={(e) =>
+                    setModalForm({ ...modalForm, notes: e.target.value })
+                    }
                     className="md:col-span-2"
                     rows={3}
-                  />
+                />
 
-                  {/* Checkboxes */}
-                  <label className="md:col-span-2 text-xs text-gray-500 flex items-start space-x-2">
+                {/* Required Privacy Checkbox */}
+                <label className="md:col-span-2 text-xs text-gray-500 flex items-start space-x-2">
                     <input
-                      type="checkbox"
-                      required
-                      checked={modalForm.privacyConsent}
-                      onChange={(e)=> setModalForm({...modalForm, privacyConsent: e.target.checked})}
+                    name="privacyConsent"
+                    type="checkbox"
+                    required
+                    checked={modalForm.privacyConsent}
+                    onChange={(e) =>
+                        setModalForm({ ...modalForm, privacyConsent: e.target.checked })
+                    }
                     />
-                    <span>
-                      I agree to the Privacy Policy and Terms & Conditions *
-                    </span>
-                  </label>
+                    <span>I agree to the Privacy Policy and Terms & Conditions *</span>
+                </label>
 
-                  <label className="md:col-span-2 text-xs text-gray-500 flex items-start space-x-2">
+                {/* Optional SMS Checkbox */}
+                <label className="md:col-span-2 text-xs text-gray-500 flex items-start space-x-2">
                     <input
-                      type="checkbox"
-                      checked={modalForm.smsConsent}
-                      onChange={(e)=> setModalForm({...modalForm, smsConsent: e.target.checked})}
+                    name="smsConsent"
+                    type="checkbox"
+                    checked={modalForm.smsConsent}
+                    onChange={(e) =>
+                        setModalForm({ ...modalForm, smsConsent: e.target.checked })
+                    }
                     />
-                    <span>
-                      I consent to receive SMS messages.
-                    </span>
-                  </label>
+                    <span>I consent to receive SMS messages.</span>
+                </label>
 
-                  <div className="md:col-span-2">
-                    <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                      Submit Request
+                <div className="md:col-span-2">
+                    <Button
+                    type="submit"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                    >
+                    Submit Request
                     </Button>
-                  </div>
+                </div>
                 </form>
+
               </DialogContent>
             </Dialog>
           </nav>
