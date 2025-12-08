@@ -79,8 +79,6 @@ export default function Navbar() {
             <Link href="/#how-it-works" className="text-gray-700 hover:text-blue-600">How It Works</Link>
             <Link href="/#faq" className="text-gray-700 hover:text-blue-600">FAQ</Link>
             <Link href="/#contact" className="text-gray-700 hover:text-blue-600">Contact</Link>
-
-            <Link href="/features" className="text-gray-700 hover:text-blue-600">Features</Link>
             <Link href="/portfolio" className="text-gray-700 hover:text-blue-600">Portfolio</Link>
 
             {/* Get Cash Offer Modal */}

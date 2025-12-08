@@ -1,11 +1,54 @@
 'use client'
 
 import React, { useState } from "react"
+import { CheckCircle, Clock, DollarSign, Home, Shield } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 export default function HomePage() {
+  const [modalForm, setModalForm] = useState({
+    name: "",
+    phone: "",
+    address: "",
+    email: "",
+    bedrooms: "",
+    bathrooms: "",
+    floors: "",
+    yearBuilt: "",
+    propertyArea: "",
+    totalFloors: "",
+    notes: "",
+    privacyConsent: false,
+    smsConsent: false,
+  })
+
+  const handleModalSubmit = (e) => {
+    e.preventDefault()
+    toast.success("Cash offer request submitted! We'll reach out within 24 hours.")
+
+    setModalForm({
+      name: "",
+      phone: "",
+      address: "",
+      email: "",
+      bedrooms: "",
+      bathrooms: "",
+      floors: "",
+      yearBuilt: "",
+      propertyArea: "",
+      totalFloors: "",
+      notes: "",
+      privacyConsent: false,
+      smsConsent: false,
+    })
+  }
 
   return (
     <div className="min-h-screen bg-white">
