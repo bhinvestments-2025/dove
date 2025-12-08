@@ -2,9 +2,7 @@
 command = "yarn install && yarn build"
 publish = ".next"
 
-[[plugins]]
-package = "@netlify/plugin-nextjs"
-enabled = false
-
 [build.environment]
 NETLIFY_NEXT_PLUGIN_SKIP_FORMS = "true"
+NODE_VERSION = "20"
+YARN_ENABLE_IMMUTABLE_INSTALLS = "false"
