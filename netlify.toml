@@ -2,10 +2,11 @@
   command = "yarn install && yarn build"
   publish = ".next"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
 [build.environment]
   NODE_VERSION = "20"
   YARN_ENABLE_IMMUTABLE_INSTALLS = "false"
+  NETLIFY_NEXT_PLUGIN_SKIP_FORMS = "true"
 
+# 🚨 DISABLE AUTOMATIC NEXT PLUGIN
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
